@@ -2,9 +2,15 @@ from random import random
 
 
 class Casino:
-    def __init__(self, available_space):
-        self.available_space = available_space
+    def __init__(self, available_capacity):
+        self.available_capacity = available_capacity
 
+    def capacity(self, players):
+        player_count = []
+        for player in players:
+            if self.available_capacity > len(players):
+                player_count.append(player)
+        return (f'Curret count of players is {len(player_count)} out of max capacity {self.available_capacity}.')
 
 class Player:
     def __init__(self, name, player_roll, player_balance):
@@ -19,7 +25,7 @@ class Player:
         return self.player_roll
 
     def player_balances(self):
-        return (f'Your balance is {self.player_balance}$.')
+        return (f'Your current balance is {self.player_balance}$.')
 
 class Games:
 
@@ -45,7 +51,7 @@ class Games:
 
 
 
-
+ 
 
 player1 = Player('Shaun', random(), 100)
 player2 = Player('Jim',random(), 200)
@@ -53,6 +59,10 @@ print(player1.welcome())
 print(player1.player_balances())
 game1 = Games(random())
 print(game1.game_wins(player1))
-print(game1.game_loses(player1))
+print(game1.game_loses(player1)) 
+cas = Casino(10)
+print(cas.capacity(['John', 'Jane', 'Pete']))
+
+
 
 
